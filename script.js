@@ -265,19 +265,16 @@ if(sendRSVP){
 
 if(calendarLink){
 
-    calendarLink.addEventListener("click", () => {
-    const titulo = "Batata's Bday - Noite Sangrenta";
+   calendarLink.addEventListener("click", () => {
+    // Usamos aspas duplas para a aspa de "Batata's" não quebrar o código
+    const titulo = encodeURIComponent("Batata's Bday - Noite Sangrenta");
     const inicio = "20260801T200000";
     const fim = "20260802T020000";
-    
-    // Texto da descrição que você pediu
-    const descricao = "Noite dos vampiros, traga bebida e venha a caráter!";
+    const descricao = encodeURIComponent("Noite dos vampiros, traga bebida e venha a caráter!");
+    const local = encodeURIComponent("Coloque o endereço aqui se quiser"); // Opcional
 
-    // Monta o link usando encodeURIComponent para os textos não quebrarem no navegador
-    const link = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
-                 `&text=${encodeURIComponent(titulo)}` +
-                 `&dates=${inicio}/${fim}` +
-                 `&details=${encodeURIComponent(descricao)}`;
+    // URL linear e limpa para o Google não se perder
+    const link = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${titulo}&dates=${inicio}/${fim}&details=${descricao}&location=${local}`;
 
     window.open(link, "_blank");
 });
